@@ -1,0 +1,87 @@
+
+
+<main class="admin-container p-5">
+  <h2 class="text-center mb-4">Panel de Administración de Empleados y Departamentos</h2>
+
+  <!-- Navegación para cambiar entre empleados y departamentos -->
+  <nav class="mb-5">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" id="employees-tab" data-bs-toggle="tab" href="#employees">Empleados</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="departments-tab" data-bs-toggle="tab" href="#departments">Departamentos</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Secciones de empleados y departamentos -->
+  <div class="tab-content">
+
+    <!-- Empleados -->
+    <div class="tab-pane fade show active" id="employees">
+      <h3 class="text-start">Empleados</h3>
+
+      <!-- Tabla de empleados -->
+      <table class="table table-bordered mt-3">
+        <thead class="table-dark">
+          <tr>
+            <th>Código Empleado</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Código Departamento</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleado of empleados">
+            <td>{{ empleado.codigoEmpleado }}</td>
+            <td>{{ empleado.nombre }}</td>
+            <td>{{ empleado.primerApellido }}</td>
+            <td>{{ empleado.segundoApellido }}</td>
+            <td>{{ empleado.codigoDepartamento }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm" (click)="actualizarEmpleado(empleado)">Editar</button>
+             <!--  <button class="btn btn-danger btn-sm" (click)="eliminarEmpleado(empleado)">Eliminar</button> -->
+              <button class="btn btn-success btn-sm" (click)="agregarEmpleado()">Agregar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Departamentos -->
+    <div class="tab-pane fade" id="departments">
+      <h3 class="text-start">Departamentos</h3>
+
+      <!-- Tabla de departamentos -->
+      <table class="table table-bordered mt-3">
+        <thead class="table-dark">
+          <tr>
+            <th>Nombre departamento</th>
+            <th>codigo</th>
+         
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleado of empleados">
+            <td>{{ empleado.nombre }}</td>
+            <td>{{ empleado.email }}</td>
+            <td>{{ empleado.rol }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm" (click)="actualizarEmpleado(empleado)">Editar</button>
+              <button class="btn btn-success btn-sm" (click)="agregarEmpleado()">Agregar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+    </div>
+
+  </div>
+
+  <router-outlet></router-outlet>
+</main>
+
